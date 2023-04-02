@@ -62,6 +62,15 @@ Processes are independent and do not share data with each other, while threads w
 Creating a new process takes more time and resources than creating a new thread.<br><li>
 Context switching between processes takes more time than context switching between threads.</h5>
 What is an orphan process?<br>
+<h5>So basically an Orphan process is seen when the Parent process has finished execution and has terminated. In these cases , the system process adopts it and becomes its parent until it's termination.orphan processes don't inherently cause harm to the system, it's wise to terminate the orphan child, if it consumes more resources. 
+</h5><br>
+What is a Zombie Process?<br>
+<h5>A zombie process is basically a defunct process that has made has finished the execution and has made the exit() system call, but still has an entry in the process table.
+Normally the entry is maintained so that the parent can read the child's exit status.
+In normal conditions the parent calls wait on the child and then it checks the exit status terminates the zombie, whereas, in rare cases if the parent fails to call wait()/waitPid() on the zombie, then it can cause resource leaks(basically holding on to the allocated resource forever and failing to release them), which is fatal to concurrent systems.<br>
+Zombie processes can have adverse effects on the system if too many are generated. The process table has a finite size, and if it becomes full of zombie processes, the system will not be able to generate any new processes, causing it to come to a standstill . This typically indicates a bug in the parent program or an uncommon decision not to reap children .<br>
+They can be detected by using the ps command and a zombie process will be having a "Z" in the STAT column.Inorder to prevent Zombies , we better create APIs that do wait on their children.
+</h5>
 Why is the CPU known as a resource allocator?<br>
 What is the role of the kernel in an OS?<br>
 What is the difference between paging segmentation?<br>
