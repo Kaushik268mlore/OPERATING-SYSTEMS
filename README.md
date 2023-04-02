@@ -6,28 +6,28 @@
 
 [Kaushik Kumar](https://github.com/Kaushik268mlore)
 
-## Advanced Operating Systems Interview Questions - Process Scheduling, Deadlocks, Memory Management, and More<br>
-What is a deadlock?<br>
+## <strong>Advanced Operating Systems Interview Questions - Process Scheduling, Deadlocks, Memory Management, and More</strong><br>
+<strong>What is a deadlock?</strong><br>
 <h5>Deadlock is basically unavailability of sufficient resources to concurrently run the processes. They normally occur because of Mutual Exclusion(its basically just a way of concurreny control that prevents race conditions in Operating Systems) , Premption(giving an external the resources of the ongoing process) ,Hold and Wait(where a process holds a resource and still waits for other resources to finish its job.) & Circular Wait(Two or resources wait for resources each have in a cyclic order) </h5>
-How do you prevent a deadlock?<br>
+<strong>How do you prevent a deadlock?</strong><br>
 <h5>Well, Deadlock Prevention is usually frowned upon though , due to its higher order of computation <br>
 Well, there are a few ways Deadlock Avoidance  is possible - Banker's Algorithm <br>
 Deadlock Prevention is done by elimination of any one of the causations of the deadlock.
 Deadlock Negligence - Treating deadlock is highly expensive on the resources , So in most cases it is neglected and the process is killed ( more like the times when we kill a task using task manager while our browsers show high latency )
 </h5>
-What is synchronization?<br>
+<strong>What is synchronization?</strong><br>
 <h5> Its a way to concurrently run multiple processes that don't affect each others (in terms of resource allocation and writes)
 </h5>
-What is a semaphore?<br>
+<strong>What is a semaphore?</strong><br>
 <h5>Semaphores are basically IPC mechanisms that ensure synchronisation of processes. Using semaphores is just one way of attaining sync.<br>
 There are basically 2 types Mutex-lock(binary) and counting semaphores(can range depending on the number of processes).</h5>
-What is a race condition?<br>
+<strong>What is a race condition?</strong><br>
 <h5>
 A race condition is a situation that occurs when two or more threads or processes attempt to perform operations on shared data at the same time1. Because the thread scheduling algorithm can swap between threads at any time, you don’t know the order in which the threads will attempt to access the shared data1. This can result in unpredictable behavior and undesirable outcomes.
 
 To prevent race conditions from occurring, you would typically put a lock around the shared data to ensure only one thread can access the data at a time.
 </h5>
-What are mutex locks?<br>
+<strong>What are mutex locks?</strong><br>
 <h5>These are basially variables(entities) in programs that prevent multiple processes from accessing a shared resource at a time.<br>
 <pre>
   std::mutex mtx; // mutex for critical section
@@ -50,9 +50,9 @@ int main() {
     return 0;
 } </pre>
 </h5>
-What is a process?<br>
+<strong>What is a process?</strong><br>
 <h5>Process is the most fundamental unit of Computation.</h5>
-Difference between thread and process?<br>
+<strong>Difference between thread and process?</strong><br>
 <h5>A process is an instance of a program that is being executed. It contains the program code and its current activity. Each process has its own memory space and system resources.<br>
 A thread, on the other hand, is a lightweight unit of execution within a process. Threads share the same memory space and system resources as their parent process.
 Some notable differences are :
@@ -61,15 +61,15 @@ Processes have their own memory space and system resources, while threads share 
 Processes are independent and do not share data with each other, while threads within the same process can share data with each other.<br><li>
 Creating a new process takes more time and resources than creating a new thread.<br><li>
 Context switching between processes takes more time than context switching between threads.</h5>
-What is an orphan process?<br>
+<strong>What is an orphan process?</strong><br>
 <h5>So basically an Orphan process is seen when the Parent process has finished execution and has terminated. In these cases , the system process adopts it and becomes its parent until it's termination.orphan processes don't inherently cause harm to the system, it's wise to terminate the orphan child, if it consumes more resources. 
 </h5><br>
-What is a Zombie Process?<br>
+<strong>What is a Zombie Process?</strong><br>
 <h5>A zombie process is basically a defunct process that has made has finished the execution and has made the exit() system call, but still has an entry in the process table.
 Normally the entry is maintained so that the parent can read the child's exit status.
 In normal conditions the parent calls wait on the child and then it checks the exit status terminates the zombie, whereas, in rare cases if the parent fails to call wait()/waitPid() on the zombie, then it can cause resource leaks(basically holding on to the allocated resource forever and failing to release them), which is fatal to concurrent systems.<br>
 Zombie processes can have adverse effects on the system if too many are generated. The process table has a finite size, and if it becomes full of zombie processes, the system will not be able to generate any new processes, causing it to come to a standstill . This typically indicates a bug in the parent program or an uncommon decision not to reap children .<br>
-They can be detected by using the ps command and a zombie process will be having a "Z" in the STAT column.Inorder to prevent Zombies , we better create APIs that do wait on their children.
+They can be detected by using the ps command and a zombie process will be having a "Z" in the STAT column.Inorder to prevent Zombies , we better create APIs that do wait on their children
 </h5>
 Why is the CPU known as a resource allocator?<br>
 What is the role of the kernel in an OS?<br>
